@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Module initial config
+ * 
+ * @author Wouter van Tilburg <wouter@icepay.eu>
+ */
+-->
+<config>
+    <modules>
+        <Icepay_AutoCapture>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Icepay_AutoCapture>
+    </modules>
+</config>

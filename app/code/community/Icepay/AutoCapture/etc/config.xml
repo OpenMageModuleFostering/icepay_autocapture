@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Module configuration
+ * 
+ * @author Wouter van Tilburg <wouter@icepay.eu>
+ * @copyright ICEPAY <www.icepay.com>
+ */
+-->
+<config>
+    <modules>
+        <Icepay_AutoCapture>
+            <version>1.0.0</version>
+        </Icepay_AutoCapture>
+    </modules>
+    <global>
+        <models>
+            <icepay_autocapture>
+                <class>Icepay_AutoCapture_Model</class>
+            </icepay_autocapture>   
+        </models>
+        <helpers>
+            <icepay_autocapture>
+                <class>Icepay_AutoCapture_Helper</class>
+            </icepay_autocapture>
+        </helpers>
+        <blocks>
+            <icepay_autocapture>
+                <class>Icepay_AutoCapture_Block</class>
+            </icepay_autocapture>
+        </blocks>
+        <events>
+            <sales_order_save_after>
+                <observers>
+                    <icepayautocapture>
+                        <type>singleton</type>
+                        <class>icepay_autocapture/observer</class>
+                        <method>sales_order_save_after</method>
+                    </icepayautocapture>
+                </observers>
+            </sales_order_save_after>
+        </events>
+    </global>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Icepay_AutoCapture>
+                    <files>
+                        <default>Icepay_AutoCapture.csv</default>
+                    </files>
+                </Icepay_AutoCapture>
+            </modules>
+        </translate>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <icepay_autocapture>
+                                            <title>ICEPAY Auto Capture</title>
+                                        </icepay_autocapture>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

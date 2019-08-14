@@ -1,0 +1,31 @@
+<table class="form-list">
+    <tr>
+        <td colspan="11" class="grid tier">
+            <table cellspacing="0" class="data border" id="modules_table">
+                <col width="90" />
+                <col width="40" />
+                <col width="120" />
+                <col width="90" />
+                <thead>
+                    <tr class="headings">
+                        <th><?php echo Mage::Helper('icepay_autocapture')->__('Module') ?></th>
+                        <th><?php echo Mage::Helper('icepay_autocapture')->__('Version') ?></th>
+                        <th><?php echo Mage::Helper('icepay_autocapture')->__('Compatibility') ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ICEPAY Auto Capture</td>
+                        <td><?php echo Mage::Helper('icepay_autocapture')->getVersion(); ?></td>
+                        <td>ICEPAY Advanced <?php echo Mage::Helper('icepay_autocapture')->getCompatiblityVersion(); ?>+</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="icepay_debug" id="icepay_debugger">
+                <?php foreach (Mage::Helper('icepay_autocapture')->doChecks() as $key => $line) { ?>
+                    <p id="msg_id_<?php echo $key; ?>" class="<?php echo $line['result']; ?>"><?php echo $line['line']; ?></p>
+                <?php } ?>
+            </div>
+        </td>
+    </tr>
+</table>

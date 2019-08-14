@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Module configuration
+ * 
+ * @author Wouter van Tilburg <wouter@icepay.eu>
+ * @copyright ICEPAY <www.icepay.com>
+ */
+-->
+<config>
+    <sections>
+        <icepay_autocapture translate="label" module="icepay_autocapture">
+            <label>Auto Capture</label>
+            <tab>icepay</tab>
+            <frontend_type>text</frontend_type>
+            <class>icepay-section</class>
+            <sort_order>501</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings translate="label comment">
+                    <label>Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <expanded>1</expanded>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>1</show_in_store>  
+                    <fields>
+                        <merchant_id>
+                            <label>Merchant ID</label>
+                            <frontend_type>Label</frontend_type>
+                            <sort_order>1</sort_order>
+                            <backend_model>icepay_autocapture/settings</backend_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </merchant_id>
+                        <active>
+                            <label>Auto Capture</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <source_model>icepay_autocapture/settings</source_model>        
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                    </fields>
+                </settings>
+                <info translate="label comment">
+                    <label>Configuration Information</label>
+                    <frontend_type>text</frontend_type>
+                    <expanded>1</expanded>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <version>
+                            <label>Modules</label>
+                            <frontend_model>icepay_autocapture/adminhtml_grid_moduleinfo</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </version>
+                    </fields>
+                </info>
+            </groups>
+        </icepay_autocapture>
+    </sections>   
+</config>
