@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
     <name>Icepay_AutoCapture</name>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <stability>stable</stability>
     <license>Commercial</license>
     <channel>community</channel>
@@ -11,11 +11,11 @@ www.icepay.com</summary>
     <description>Captures Afterpay transactions upon shipping.&#xD;
 &#xD;
 Requires ICEPAY Advanced.</description>
-    <notes>Initial release</notes>
+    <notes>- Fixed AutoCapture not being triggered when shipping is done through the Magento API.</notes>
     <authors><author><name>ICEPAY</name><user>ICEPAY_PSP</user><email>it@icepay.com</email></author><author><name>Wouter van Tilburg</name><user>wvantilburg</user><email>wouter@icepay.eu</email></author></authors>
-    <date>2013-05-22</date>
-    <time>09:02:56</time>
-    <contents><target name="magecommunity"><dir name="Icepay"><dir name="AutoCapture"><dir><dir name="Block"><dir name="Adminhtml"><dir name="Grid"><file name="Moduleinfo.php" hash="fdc55156394912cfb6b0cc9ffe291c0b"/></dir></dir></dir><dir name="Helper"><file name="Data.php" hash="644f4d929055516a26318e13877ffb4f"/></dir><dir name="Model"><file name="Observer.php" hash="7f25f2130389e643fb1da8f51a1ff9e1"/><file name="Settings.php" hash="853c0f07b95090000d0becf50bb0256a"/><file name="Webservice.php" hash="dca2c932b00541ffe22b66e50cbfc1ba"/></dir><dir name="etc"><file name="config.xml" hash="e4ddbd4cb87825f612302492e8f83824"/><file name="system.xml" hash="ae6d6173b53715f443267cac98f26244"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Icepay_AutoCapture.xml" hash="4639ada113edc2b2ed5596ec40cb184b"/></dir></target><target name="magelocale"><dir><dir name="nl_NL"><file name="Icepay_AutoCapture.csv" hash="c0a4b03f36b10f43b2ab2f7399fd9653"/></dir></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="template"><dir name="icepayautocapture"><file name="module_information.phtml" hash="5994ac5b0012297064e23d976b667928"/></dir></dir></dir></dir></dir></target></contents>
+    <date>2013-07-26</date>
+    <time>12:28:50</time>
+    <contents><target name="magecommunity"><dir name="Icepay"><dir name="AutoCapture"><dir><dir name="Block"><dir name="Adminhtml"><dir name="Grid"><file name="Moduleinfo.php" hash="fdc55156394912cfb6b0cc9ffe291c0b"/></dir></dir></dir><dir name="Helper"><file name="Data.php" hash="2944c3b9625d07a4876b972cffa1ea21"/></dir><dir name="Model"><file name="Observer.php" hash="7e528862f8feee123d752dd417dc4458"/><file name="Settings.php" hash="853c0f07b95090000d0becf50bb0256a"/><file name="Webservice.php" hash="94eb0658d9c3a40482058b5a662390f5"/></dir><dir name="etc"><file name="config.xml" hash="e4ddbd4cb87825f612302492e8f83824"/><file name="system.xml" hash="ae6d6173b53715f443267cac98f26244"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Icepay_AutoCapture.xml" hash="4639ada113edc2b2ed5596ec40cb184b"/></dir></target><target name="magelocale"><dir><dir name="nl_NL"><file name="Icepay_AutoCapture.csv" hash="c0a4b03f36b10f43b2ab2f7399fd9653"/></dir></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="template"><dir name="icepayautocapture"><file name="module_information.phtml" hash="5994ac5b0012297064e23d976b667928"/></dir></dir></dir></dir></dir></target></contents>
     <compatible/>
     <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php><package><name>Icepay_IceAdvanced</name><channel>community</channel><min>1.1.7</min><max>9.0.0</max></package><extension><name>soap</name><min></min><max></max></extension></required></dependencies>
 </package>

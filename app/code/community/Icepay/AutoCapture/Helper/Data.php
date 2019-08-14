@@ -16,7 +16,7 @@
  */
 class Icepay_AutoCapture_Helper_Data extends Mage_Core_Helper_Abstract {
 
-    private $_version = '1.0.0';
+    private $_version = '1.0.1';
     private $_minAdvancedVersion = '1.1.7';
 
     public function getCompatiblityVersion() {

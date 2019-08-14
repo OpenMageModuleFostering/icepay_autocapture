@@ -17,15 +17,20 @@
 class Icepay_AutoCapture_Model_Observer {
 
     public function sales_order_save_after(Varien_Event_Observer $observer) {        
-        // Check if event is being triggered from the sales_order_shipment controller
-        if (Mage::app()->getFrontController()->getRequest()->getControllerName() != 'sales_order_shipment')
+        $order = $observer->getEvent()->getOrder();
+
+        $apiRunning = Mage::getSingleton('api/server')->getAdapter() != null;
+        
+        if (!$apiRunning && Mage::app()->getFrontController()->getRequest()->getControllerName() != 'sales_order_shipment')
             return;
         
-        $order = $observer->getEvent()->getOrder();
+        Mage::Helper('icecore')->log('[AutoCapture] 1');
         
         // Check if ICEPAY order
         if (!Mage::Helper('icepay_autocapture')->isIcepayOrder($order->getIncrementId()))
             return;
+        
+        Mage::Helper('icecore')->log('AutoCapture] 2');
         
         $iceCoreModel = Mage::getModel('icecore/mysql4_iceCore');
         $ic_order = $iceCoreModel->loadPaymentByID($order->getIncrementId());

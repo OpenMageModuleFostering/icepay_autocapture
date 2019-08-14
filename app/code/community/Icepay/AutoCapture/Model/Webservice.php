@@ -19,7 +19,7 @@ class Icepay_AutoCapture_Model_Webservice {
     private $_client;
     private $_merchantID;
     private $_secretCode;
-    private $_url = 'https://connect.icepay.com/webservice/APCapture.svc?wsdl';
+    private $_url = 'https://connect.icepay.com/webservice2/APCapture.svc?wsdl';
     
     public function init($merchantID, $secretCode) {
         $this->_merchantID = (int) $merchantID;
