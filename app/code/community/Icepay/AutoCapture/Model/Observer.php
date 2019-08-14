@@ -16,50 +16,48 @@
  */
 class Icepay_AutoCapture_Model_Observer {
 
-    public function sales_order_save_after(Varien_Event_Observer $observer) {        
+    public function sales_order_save_after(Varien_Event_Observer $observer)
+    {
         $order = $observer->getEvent()->getOrder();
 
         $apiRunning = Mage::getSingleton('api/server')->getAdapter() != null;
-        
-        if (!$apiRunning && Mage::app()->getFrontController()->getRequest()->getControllerName() != 'sales_order_shipment')
-            return;
-        
-        Mage::Helper('icecore')->log('[AutoCapture] 1');
-        
-        // Check if ICEPAY order
-        if (!Mage::Helper('icepay_autocapture')->isIcepayOrder($order->getIncrementId()))
-            return;
-        
-        Mage::Helper('icecore')->log('AutoCapture] 2');
-        
-        $iceCoreModel = Mage::getModel('icecore/mysql4_iceCore');
-        $ic_order = $iceCoreModel->loadPaymentByID($order->getIncrementId());
-        
-        $storeID = $ic_order['store_id'];
-        
-        // Check if auto capture is active
-        if (!Mage::Helper('icepay_autocapture')->isAutoCaptureActive($storeID))
-            return;
 
-        $iceAdvancedModel = Mage::getModel('iceadvanced/mysql4_iceadvanced');
-        $iceAdvancedModel->setScope($storeID);
-        $paymentMethodData = $iceAdvancedModel->getPaymentMethodDataArrayByReference($ic_order['model']);
+        if (($apiRunning) || (Mage::app()->getFrontController()->getRequest()->getControllerName() == 'sales_order_shipment')) {
 
-        if (empty($paymentMethodData)) {
-            $iceAdvancedModel->setScope(0);
+            // Check if ICEPAY order
+            if (!Mage::Helper('icepay_autocapture')->isIcepayOrder($order->getIncrementId()))
+                return;
+
+            $iceCoreModel = Mage::getModel('icecore/mysql4_iceCore');
+            $ic_order = $iceCoreModel->loadPaymentByID($order->getIncrementId());
+
+            $storeID = $ic_order['store_id'];
+
+            // Check if auto capture is active
+            if (!Mage::Helper('icepay_autocapture')->isAutoCaptureActive($storeID))
+                return;
+
+            $iceAdvancedModel = Mage::getModel('iceadvanced/mysql4_iceadvanced');
+            $iceAdvancedModel->setScope($storeID);
             $paymentMethodData = $iceAdvancedModel->getPaymentMethodDataArrayByReference($ic_order['model']);
+
+            if (empty($paymentMethodData)) {
+                $iceAdvancedModel->setScope(0);
+                $paymentMethodData = $iceAdvancedModel->getPaymentMethodDataArrayByReference($ic_order['model']);
+            }
+
+            // Check if payment method is Afterpay
+            if (strtoupper($paymentMethodData['pm_code']) != 'AFTERPAY')
+                return;
+
+            $merchantID = Mage::getStoreConfig('icecore/settings/merchant_id', $storeID);
+            $secretCode = Mage::getStoreConfig('icecore/settings/merchant_secret', $storeID);
+
+            $service = Mage::getModel('Icepay_AutoCapture_Model_Webservice_AutoCapture');
+            $service->init($merchantID, $secretCode);
+
+            $service->captureFull($ic_order['transaction_id']);
         }
-        
-        // Check if payment method is Afterpay
-        if ($paymentMethodData['pm_code'] != 'afterpay')
-            return;
-        
-        $merchantID = Mage::getStoreConfig('icecore/settings/merchant_id', $storeID);
-        $secretCode = Mage::getStoreConfig('icecore/settings/merchant_secret', $storeID);
-        
-        $service = Mage::getModel('Icepay_AutoCapture_Model_Webservice');
-        $service->init($merchantID, $secretCode);
-        
-        $service->captureFull($ic_order['transaction_id']);
     }
+
 }

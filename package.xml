@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
     <name>Icepay_AutoCapture</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <stability>stable</stability>
     <license>Commercial</license>
     <channel>community</channel>
@@ -11,11 +11,13 @@ www.icepay.com</summary>
     <description>Captures Afterpay transactions upon shipping.&#xD;
 &#xD;
 Requires ICEPAY Advanced.</description>
-    <notes>- Fixed AutoCapture not being triggered when shipping is done through the Magento API.</notes>
+    <notes>- Fixed AutoCapture not being triggered when shipping is done through the Magento API.&#xD;
+- Merged webservice settings with Advanced module&#xD;
+- Module now requires ICEPAY Advanced 1.1.9 as minimum.</notes>
     <authors><author><name>ICEPAY</name><user>ICEPAY_PSP</user><email>it@icepay.com</email></author><author><name>Wouter van Tilburg</name><user>wvantilburg</user><email>wouter@icepay.eu</email></author></authors>
-    <date>2013-07-26</date>
-    <time>12:28:50</time>
-    <contents><target name="magecommunity"><dir name="Icepay"><dir name="AutoCapture"><dir><dir name="Block"><dir name="Adminhtml"><dir name="Grid"><file name="Moduleinfo.php" hash="fdc55156394912cfb6b0cc9ffe291c0b"/></dir></dir></dir><dir name="Helper"><file name="Data.php" hash="2944c3b9625d07a4876b972cffa1ea21"/></dir><dir name="Model"><file name="Observer.php" hash="7e528862f8feee123d752dd417dc4458"/><file name="Settings.php" hash="853c0f07b95090000d0becf50bb0256a"/><file name="Webservice.php" hash="94eb0658d9c3a40482058b5a662390f5"/></dir><dir name="etc"><file name="config.xml" hash="e4ddbd4cb87825f612302492e8f83824"/><file name="system.xml" hash="ae6d6173b53715f443267cac98f26244"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Icepay_AutoCapture.xml" hash="4639ada113edc2b2ed5596ec40cb184b"/></dir></target><target name="magelocale"><dir><dir name="nl_NL"><file name="Icepay_AutoCapture.csv" hash="c0a4b03f36b10f43b2ab2f7399fd9653"/></dir></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="template"><dir name="icepayautocapture"><file name="module_information.phtml" hash="5994ac5b0012297064e23d976b667928"/></dir></dir></dir></dir></dir></target></contents>
+    <date>2013-08-14</date>
+    <time>11:15:13</time>
+    <contents><target name="magecommunity"><dir name="Icepay"><dir name="AutoCapture"><dir><dir name="Block"><dir name="Adminhtml"><dir name="Grid"><file name="Moduleinfo.php" hash="fdc55156394912cfb6b0cc9ffe291c0b"/></dir></dir></dir><dir name="Helper"><file name="Data.php" hash="14be30ad89c84e3ed1497b0ab1cf7c4b"/></dir><dir name="Model"><file name="Observer.php" hash="eb7219264d03ad874fc510cd7ff3eb88"/><file name="Settings.php" hash="853c0f07b95090000d0becf50bb0256a"/><dir name="Webservice"><file name="AutoCapture.php" hash="8dceb1e2578dd8fea93ce7134ca34f6a"/></dir></dir><dir name="etc"><file name="config.xml" hash="e4ddbd4cb87825f612302492e8f83824"/><file name="system.xml" hash="ae6d6173b53715f443267cac98f26244"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Icepay_AutoCapture.xml" hash="4639ada113edc2b2ed5596ec40cb184b"/></dir></target><target name="magelocale"><dir><dir name="nl_NL"><file name="Icepay_AutoCapture.csv" hash="c0a4b03f36b10f43b2ab2f7399fd9653"/></dir></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="template"><dir name="icepayautocapture"><file name="module_information.phtml" hash="5994ac5b0012297064e23d976b667928"/></dir></dir></dir></dir></dir></target></contents>
     <compatible/>
-    <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php><package><name>Icepay_IceAdvanced</name><channel>community</channel><min>1.1.7</min><max>9.0.0</max></package><extension><name>soap</name><min></min><max></max></extension></required></dependencies>
+    <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php><package><name>Icepay_IceAdvanced</name><channel>community</channel><min>1.1.9</min><max>9.0.0</max></package><extension><name>soap</name><min></min><max></max></extension></required></dependencies>
 </package>

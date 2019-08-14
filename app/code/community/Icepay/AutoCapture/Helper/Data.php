@@ -16,33 +16,39 @@
  */
 class Icepay_AutoCapture_Helper_Data extends Mage_Core_Helper_Abstract {
 
-    private $_version = '1.0.1';
-    private $_minAdvancedVersion = '1.1.7';
+    private $_version = '1.0.2';
+    private $_minAdvancedVersion = '1.1.9';
 
-    public function getCompatiblityVersion() {
+    public function getCompatiblityVersion()
+    {
         return $this->_minAdvancedVersion;
     }
 
-    public function getVersion() {
+    public function getVersion()
+    {
         return $this->_version;
     }
 
-    public function isCompatible() {
-        return (Mage::Helper('iceadvanced')->version >= $this->_minAdvancedVersion);
+    public function isCompatible()
+    {
+        return version_compare(Mage::Helper('iceadvanced')->version, $this->_minAdvancedVersion, '>=');
     }
-    
-    public function isAutoCaptureActive($storeID) {        
-        return (bool)Mage::getStoreConfig('icepay_autocapture/settings/active', $storeID);
+
+    public function isAutoCaptureActive($storeID)
+    {
+        return (bool) Mage::getStoreConfig('icepay_autocapture/settings/active', $storeID);
     }
-    
-    public function isIcepayOrder($orderID) {
+
+    public function isIcepayOrder($orderID)
+    {
         $order = Mage::getModel('sales/order')->loadByIncrementId($orderID);
         $paymentCode = $order->getPayment()->getMethodInstance()->getCode();
 
         return (strpos($paymentCode, 'icepayadv_') !== false) ? true : false;
     }
-    
-    public function doChecks() {
+
+    public function doChecks()
+    {
         $lines = array();
 
         $soapCheck = Mage::helper('icecore')->hasSOAP();
@@ -57,4 +63,5 @@ class Icepay_AutoCapture_Helper_Data extends Mage_Core_Helper_Abstract {
 
         return $lines;
     }
+
 }
