@@ -1,17 +1,5 @@
 {
-    "name": "OpenMageModuleFostering/Icepay_AutoCapture",
-    "type": "magento-module",
-    "license": "Commercial",
-    "homepage": "",
-    "description": "Enables auto capture for Afterpay using payment service provider ICEPAY.
-www.icepay.com",
-    "authors": [
-    {
-        "name": "ICEPAY",
-        "email": "it@icepay.com"
-    }
-],
-    "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+    "keywords": [
+        "openmage-module"
+    ]
 }
